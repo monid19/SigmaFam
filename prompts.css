@@ -1,0 +1,24 @@
+body{
+    font-family: poppins;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color:#4b4453;
+
+}
+header{
+    text-align: center;
+    margin:20px 0;
+}
+.categories{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.category{
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
