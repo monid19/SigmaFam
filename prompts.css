@@ -22,3 +22,44 @@ header{
     border-radius: 5px;
     margin: 0 10px;
     cursor: pointer;
+}
+.catergory.active{
+    background-color: #4b4453;
+    color: white;
+}
+.prompts-container{
+    text-align: center;
+    margin:20px;
+}
+.prompt-box{
+    
+    padding: 20px;
+    color:#4b4453
+    background-color: #EAEDE9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.spin-button{
+    padding: 10px 20px ;
+    border : none;
+    border-radius: 5px;
+    background-color: #4b4453;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.picture-container {
+    text-align: center;
+    margin: 20px;
+  }
+
+  .picture-button {
+    padding: 30px;
+    border: 2px solid #4B4453;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+    cursor: pointer;
+  }
+
