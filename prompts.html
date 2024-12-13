@@ -6,32 +6,49 @@
     <title>prompts</title>
 </head>
 <link rel = "stylesheet" href = "prompts.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <body>
     <header>
         <h1>prompts</h1>
     </header>
-    <nav class="categories">
-        <button class="category" id="school-category">School</button>
-        <button class="category active" id="hobbies-category">Hobbies</button>
-        <button class="category" id="memories-category">Memories</button>
-        <button class="category" id="obstacles-category">Obstacles</button>
-      </nav>
+    <div class="categories">
+        <div class="category" id="school-category">School</div>
+        <div class="category active" id="hobbies-category">Hobbies</div>
+        <div class="category" id="memories-category">Memories</div>
+        <div class="category" id="obstacles-category">Obstacles</div>
+    </div>
       <div class ="prompts-container">
         
-            <div class="prompts">
-                <div class="prompt-container">
-                  <div class="prompt">If you could spend an entire day learning about one thing, what would it be?</div>
-                  
-                
-              </div>
+        <div class=" prompt-box"id="prompt-box">
+           
               
             </div>
-            <button clss="spin-button" id="spin-button">Spin</button>
+            <button class="spin-button" id="spin-button">Spin</button>
+
+
             <div class="picture-container" >
                 <div class="picture-button">
                     <img src = "camera-icon.png" alt "camera-icon">
 
                 </div>
+            </div>
+
+            <div class="navbar">
+                <div class="navbar-item">Memories</div>
+                <div class="navbar-item">Prompts</div>
+                <div class="navbar-item">Home</div>
+                <div class="navbar-item">Profile</div>
+                <div class="navbar-item">Achievements</div>
+              </div> 
+
+              <div class="popup-overlay" id="popup-overlay">
+              <div class="popup-content">
+                <h2>YOUR TOPIC!</h2>
+                <p id="popup-prompt">Loading topic</p>
+                <button id="close-popup">LET'S TALK!</button>
+                <button class="spin-button" id="spin-button">Spin</button>
+
+              </div>
             </div>
           
 
