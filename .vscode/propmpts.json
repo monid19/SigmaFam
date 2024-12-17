@@ -1,0 +1,31 @@
+{
+    "school": [
+      "What subject do you enjoy the most and why?",
+      "What was your favorite school project?",
+      "What are your goals for this school year?",
+      "Who is your favorite teacher and what makes them special?",
+      "What’s your study routine?"
+    ],
+    "hobbies": [
+      "What is a hobby you’ve always wanted to pick up but never did?",
+      "What is your favorite way to relax after a busy day?",
+      "What hobby do you find most fulfilling?",
+      "If you could teach a class on any hobby, what would it be?",
+      "What’s the most creative thing you’ve done in your free time?"
+    ],
+    "memories": [
+      "What is your most cherished childhood memory?",
+      "If you could relive any day in your life, which one would it be?",
+      "What’s the most embarrassing moment you can remember?",
+      "Who had the biggest impact on your childhood?",
+      "What’s a moment from your past that makes you smile every time you think of it?"
+    ],
+    "obstacles": [
+      "What is the biggest obstacle you’ve overcome and how did you do it?",
+      "What challenges do you currently face and how are you managing them?",
+      "What’s the hardest decision you’ve had to make in your life?",
+      "What’s something you’ve learned from overcoming a challenge?",
+      "How do you stay motivated when things get tough?"
+    ]
+  }
+  

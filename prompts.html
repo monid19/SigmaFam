@@ -19,6 +19,7 @@
     </div>
       <div class ="prompts-container">
         
+        
         <div class=" prompt-box"id="prompt-box">
            
               
@@ -50,7 +51,38 @@
 
               </div>
             </div>
-          
+          <script>
+            const prompts = {
+                school:[],
+                hobbies:[],
+                memories:[],
+                obstacles:[],
+            }
+            const spinBUtton = documement.getElementById('spin-button');
+            const promptBox = document.getElementById('prompt-box')
+            const popupOverlay = document.getElementById('popup-overlay');
+            const popupPrompt = document.getElementById('popup-prompt');
+            const closePopup = document.getElementById('close-popup');
+            let currentCategory = 'hobbies'
+
+            fetch('prompts.json')
+            .then(response=> response.json())
+            .then(data=>{
+                Object.assign(prompts,data );
+                updatePrompt();
+            })
+            .catch(error=>console.error('Error loading prompts:',error))
+            const categoryButtons = document.querySelectorAll('.category');
+
+categoryButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    categoryButtons.forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+    currentCategory = button.id.split('-')[0];
+    updatePrompt();
+  });
+});
+          </script>
 
 
       
