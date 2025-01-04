@@ -10,83 +10,107 @@ header{
     text-align: center;
     margin: 20px; 
 }
-.categories{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    gap: 10px;
+.header h1 {
+  margin: 0;
+  font-size: 24px;
 }
-.category{
-    padding: 10px 20px;
-      border-radius: 20px;
-      background-color: #DCE5DD;
-      color: #4B4453;
-      font-size: 14px;
-      cursor: pointer;
-}
-.catergory.active{
-    background-color: #8f7fa7;
-    color: white;
-}
-.prompt-container {
-    text-align: center;
-    margin: 20px;
-  }
 
-  .prompt-box {
-    width: 187px;
-      height: 329px;
-      border-radius: 24px;
-      padding: 20px;
-      background-color: #EAEDE9;
-      font-size: 16px;
-      color: #4B4453;
-      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-  }
-.spin-button{
-    padding: 10px 20px ;
-    border : none;
-    border-radius: 5px;
-    background-color: #4b4453;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-   
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 0 20px;
 }
-.picture-container {
-    text-align: center;
-    margin: 20px;
-  }
 
-  .picture-button {
-    padding: 30px;
-    border: 2px solid #4B4453;
-    border-radius: 10px;
-    display: inline-block;
-    background-color: white;
-    cursor: pointer;
-  }
-.picture-button img {
-    width: 100vw;
-    height: 100vh;
-  }
-  .navbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    border-top: 1px solid #EAEAEA;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-  }
+.category {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #DCE5DD;
+  color: #4B4453;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  border: none;
+}
 
+.category.active {
+  background-color: #8F7FA7;
+  color: white;
+}
+
+.prompts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1000px;
+  min-height: 400px;
+}
+
+.prompt-box {
+  width: 187px;
+  height: 329px;
+  border-radius: 24px;
+  padding: 20px;
+  background-color: #EAEDE9;
+  font-size: 16px;
+  color: #4B4453;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+.prompt-box.left, .prompt-box.right {
+  opacity: 0.6;
+  transform: scale(0.9);
+}
+
+.prompt-box.center {
+  z-index: 2;
+  background-color: #EAEDE9;
+  transform: scale(1.1);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.blurred {
+  filter: blur(4px);
+  opacity: 0.6;
+}
+
+.side-box {
+  opacity: 0;
+}
+
+.side-box.fade-in {
+  opacity: 0.6;
+}
+
+.controls {
+  text-align: center;
+  padding: 20px;
+}
+
+.spin-button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4B4453;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.spin-button:hover {
+  background-color: #5d5466;
+}
   .navbar-item {
     text-align: center;
     font-size: 14px;
