@@ -7,6 +7,7 @@
 </head>
 <link rel = "stylesheet" href = "prompts.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <body>
     <header>
         <h1>prompts</h1>
@@ -35,27 +36,21 @@
 
            
 
-            <div class="navbar">
-                <div class="navbar-item">Memories</div>
-                <div class="navbar-item">Prompts</div>
-                <div class="navbar-item">Home</div>
-                <div class="navbar-item">Profile</div>
-                <div class="navbar-item">Achievements</div>
-              </div> 
+         
 
               <div class="popup-overlay" id="popup-overlay">
               <div class="popup-content">
                 <h2>YOUR TOPIC!</h2>
                 <p id="popup-prompt">Loading topic</p>
                 <button id="close-popup">LET'S TALK!</button>
-                <button class="spin-button" id="spin-button">Spin</button>
+                
 
               </div>
             </div>
           <script>
              const prompts = {
             school: [
-                "What was your favorite subject in school?",
+                "michael is doing his best ?",
                 "Who was your most memorable teacher?",
                 "What's your best school memory?",
                 "What's the most valuable lesson you learned in school?",
@@ -89,56 +84,79 @@
         const spinButton = document.getElementById('spin-button');
         let currentCategory = 'hobbies';
         let currentPromptIndex = 0;
+        
+        function fireConfetti() {
+    const colors = ['#FF6B6B', '#FFE66D', '#4ECDC4', '#95E1D3'];
 
-        function getRandomPrompt(category, exclude) {
-            const categoryPrompts = prompts[category];
-            let newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * categoryPrompts.length);
-            } while (newIndex === exclude);
-            return { text: categoryPrompts[newIndex], index: newIndex };
-        }
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: colors,
+        disableForReducedMotion: true
+    });
+}
 
-        function updatePrompts() {
-            leftBox.style.opacity = '0';
-            centerBox.style.opacity = '0';
-            rightBox.style.opacity = '0';
+function showPopup(prompt) {
+    document.getElementById('popup-prompt').textContent = prompt;
+    document.getElementById('popup-overlay').classList.add('show');
+    fireConfetti();
+}
 
-            setTimeout(() => {
-                const { text: centerText, index: newIndex } = getRandomPrompt(currentCategory, currentPromptIndex);
-                const { text: leftText } = getRandomPrompt(currentCategory, newIndex);
-                const { text: rightText } = getRandomPrompt(currentCategory, newIndex);
+function getRandomPrompt(category, exclude) {
+    const categoryPrompts = prompts[category];
+    let newIndex;
+    do {
+        newIndex = Math.floor(Math.random() * categoryPrompts.length);
+    } while (newIndex === exclude);
+    return { text: categoryPrompts[newIndex], index: newIndex };
+}
 
-                centerBox.textContent = centerText;
-                leftBox.textContent = leftText;
-                rightBox.textContent = rightText;
+function updatePrompts() {
+    leftBox.style.opacity = '0';
+    centerBox.style.opacity = '0';
+    rightBox.style.opacity = '0';
 
-                currentPromptIndex = newIndex;
+    setTimeout(() => {
+        const { text: centerText, index: newIndex } = getRandomPrompt(currentCategory, currentPromptIndex);
+        const { text: leftText } = getRandomPrompt(currentCategory, newIndex);
+        const { text: rightText } = getRandomPrompt(currentCategory, newIndex);
 
-                leftBox.classList.add('blurred');
-                rightBox.classList.add('blurred');
-                centerBox.classList.remove('blurred');
+        centerBox.textContent = centerText;
+        leftBox.textContent = leftText;
+        rightBox.textContent = rightText;
 
-                leftBox.style.opacity = '0.6';
-                centerBox.style.opacity = '1';
-                rightBox.style.opacity = '0.6';
-            }, 100);
-        }
+        currentPromptIndex = newIndex;
 
-        document.querySelectorAll('.category').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelectorAll('.category').forEach(b => b.classList.remove('active'));
-                button.classList.add('active');
-                currentCategory = button.id.split('-')[0];
-                updatePrompts();
-            });
-        });
+        leftBox.classList.add('blurred');
+        rightBox.classList.add('blurred');
+        centerBox.classList.remove('blurred');
 
-        spinButton.addEventListener('click', updatePrompts);
+        leftBox.style.opacity = '0.6';
+        centerBox.style.opacity = '1';
+        rightBox.style.opacity = '0.6';
 
-        updatePrompts(); 
+      
+        showPopup(centerText);
+    }, 100);
+}
 
+document.querySelectorAll('.category').forEach(button => {
+    button.addEventListener('click', () => {
+        document.querySelectorAll('.category').forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        currentCategory = button.id.split('-')[0];
+        updatePrompts();
+    });
+});
 
+document.getElementById('close-popup').addEventListener('click', function() {
+    document.getElementById('popup-overlay').classList.remove('show');
+});
+
+spinButton.addEventListener('click', updatePrompts);
+
+updatePrompts();
 
           </script>
 
