@@ -3,9 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homepage</title>
+    <title>Feed UI</title>
+<link rel="stylesheet" href="home.css">
 </head>
 <body>
-    
+    <div class="header">
+        <h1>Hi Tatee!!!!</h1>
+        <img src="images/IMG_5275.JPG" alt="Profile Picture">
+    </div>
+
+    <div class="memory-card">
+        <img src="images/227f4c70-d628-4320-9337-b6c66d6db664.JPG" alt="Memory">
+        <div class="memory-info">Memory<br>28-11-2023</div>
+        <button class="add-button">+</button>
+    </div>
+
+    <div class="feed">
+        <div class="feed-item">
+            <img src="images/IMG_4549.JPG" alt="Post Image">
+            <div class="info">
+                <p>Anetete</p>
+                <p>28-11-2024</p>
+            </div>
+        </div>
+        <div class="feed-item">
+            <img src="images/IMG_4608.heic" alt="Post Image">
+            <div class="info">
+                <p>Sven</p>
+                <p>28-11-2024</p>
+            </div>
+        </div>
+        <div class="feed-item">
+            <img src="images/IMG_4644.jpg" alt="Post Image">
+            <div class="info">
+                <p>Anetete</p>
+                <p>27-11-2024</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="end-message">You've reached the end of the feed. For now...</div>
+
+    <div class="nav-bar">
+        <div class="icon">
+            <span>Home</span>
+        </div>
+        <div class="icon">
+            <span>Prompts</span>
+        </div>
+        <div class="icon">
+            <span>+</span>
+        </div>
+        <div class="icon">
+            <span>Achievements</span>
+        </div>
+        <div class="icon">
+            <span>Profile</span>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.add-button').addEventListener('click', () => {
+            alert('Add new memory feature coming soon!');
+        });
+
+        const navIcons = document.querySelectorAll('.nav-bar .icon');
+        navIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                alert(`Navigating to: ${icon.textContent.trim()}`);
+            });
+        });
+    </script>
 </body>
 </html>

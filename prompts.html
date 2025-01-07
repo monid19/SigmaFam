@@ -33,7 +33,32 @@
     <button class="spin-button" id="spin-button">SPIN</button>
 </div>
 
+<nav>
+    <div class="nav-line">
+    
+    <a href="#prompts" class="nav-item">
+        <img src="prompts.png" alt="Prompts" class="nav-icon">
+        <span>Prompts</span>
+    </a>
+    <a href="#home" class="nav-item">
+        <img src="home.png" alt="Home" class="nav-icon">
+        <span>Home</span>
+    </a>
 
+    <a href="#new" class="new-item">
+        <i class="fas fa-plus plus-icon"></i>
+    </a>
+
+    <a href="#profile" class="nav-item">
+        <img src="profile.png" alt="Profile" class="nav-icon">
+        <span>Profile</span>
+    </a>
+    <a href="#achievements" class="nav-item">
+        <img src="achievements.png" alt="Achievements" class="nav-icon">
+        <span>Achievements</span>
+    </a>
+    </div>
+</nav>
            
 
          
@@ -89,7 +114,7 @@
     const colors = ['#FF6B6B', '#FFE66D', '#4ECDC4', '#95E1D3'];
 
     confetti({
-        particleCount: 100,
+        particleCount: 1000,
         spread: 70,
         origin: { y: 0.6 },
         colors: colors,
@@ -102,7 +127,7 @@ function showPopup(prompt) {
     document.getElementById('popup-overlay').classList.add('show');
     fireConfetti();
 }
-
+let showPopupOnUpdate = false ;
 function getRandomPrompt(category, exclude) {
     const categoryPrompts = prompts[category];
     let newIndex;
@@ -111,6 +136,7 @@ function getRandomPrompt(category, exclude) {
     } while (newIndex === exclude);
     return { text: categoryPrompts[newIndex], index: newIndex };
 }
+
 
 function updatePrompts() {
     leftBox.style.opacity = '0';
@@ -157,6 +183,21 @@ document.getElementById('close-popup').addEventListener('click', function() {
 spinButton.addEventListener('click', updatePrompts);
 
 updatePrompts();
+
+const openPopupBtn = document.getElementById('open-popup-btn');
+const closePopupBtn = document.getElementById('close-popup-btn');
+const popup = document.getElementById('popup');
+
+
+openPopupBtn.addEventListener('click', () => {
+  popup.classList.add('show'); // Add "show" class to trigger animation
+});
+
+
+closePopupBtn.addEventListener('click', () => {
+  popup.classList.remove('show'); // Remove "show" class to hide popup
+});
+
 
           </script>
 
