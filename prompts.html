@@ -8,6 +8,7 @@
 <link rel = "stylesheet" href = "prompts.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <body>
     <header>
         <h1>prompts</h1>
@@ -37,11 +38,11 @@
     <div class="nav-line">
     
     <a href="#prompts" class="nav-item">
-        <img src="prompts.png" alt="Prompts" class="nav-icon">
+        <img src="images/prompts.PNG" alt="Prompts" class="nav-icon">
         <span>Prompts</span>
     </a>
     <a href="#home" class="nav-item">
-        <img src="home.png" alt="Home" class="nav-icon">
+        <img src="images/home.PNG" alt="Home" class="nav-icon">
         <span>Home</span>
     </a>
 
@@ -50,11 +51,11 @@
     </a>
 
     <a href="#profile" class="nav-item">
-        <img src="profile.png" alt="Profile" class="nav-icon">
+        <img src="images/profile.PNG" alt="Profile" class="nav-icon">
         <span>Profile</span>
     </a>
     <a href="#achievements" class="nav-item">
-        <img src="achievements.png" alt="Achievements" class="nav-icon">
+        <img src="images/achievements.PNG" alt="Achievements" class="nav-icon">
         <span>Achievements</span>
     </a>
     </div>
@@ -103,6 +104,8 @@
                 "What's a challenge that made you stronger?"
             ]
         };
+
+        let showPopupOnUpdate = false ;
         const leftBox = document.getElementById('left-box');
         const centerBox = document.getElementById('center-box');
         const rightBox = document.getElementById('right-box');
@@ -110,7 +113,17 @@
         let currentCategory = 'hobbies';
         let currentPromptIndex = 0;
         
-        function fireConfetti() {
+ 
+function getRandomPrompt(category, exclude) {
+    const categoryPrompts = prompts[category];
+    let newIndex;
+    do {
+        newIndex = Math.floor(Math.random() * categoryPrompts.length);
+    } while (newIndex === exclude);
+    return { text: categoryPrompts[newIndex], index: newIndex };
+}
+
+function fireConfetti() {
     const colors = ['#FF6B6B', '#FFE66D', '#4ECDC4', '#95E1D3'];
 
     confetti({
@@ -127,17 +140,7 @@ function showPopup(prompt) {
     document.getElementById('popup-overlay').classList.add('show');
     fireConfetti();
 }
-let showPopupOnUpdate = false ;
-function getRandomPrompt(category, exclude) {
-    const categoryPrompts = prompts[category];
-    let newIndex;
-    do {
-        newIndex = Math.floor(Math.random() * categoryPrompts.length);
-    } while (newIndex === exclude);
-    return { text: categoryPrompts[newIndex], index: newIndex };
-}
-
-
+ 
 function updatePrompts() {
     leftBox.style.opacity = '0';
     centerBox.style.opacity = '0';
@@ -162,8 +165,10 @@ function updatePrompts() {
         centerBox.style.opacity = '1';
         rightBox.style.opacity = '0.6';
 
-      
+      if (showPopupOnUpdate){
         showPopup(centerText);
+      }
+       showPopupOnUpdate = true; //ensures following updates show the popup
     }, 100);
 }
 
@@ -171,8 +176,8 @@ document.querySelectorAll('.category').forEach(button => {
     button.addEventListener('click', () => {
         document.querySelectorAll('.category').forEach(b => b.classList.remove('active'));
         button.classList.add('active');
-        currentCategory = button.id.split('-')[0];
-        updatePrompts();
+        currentCategory = button.id.split('-')[0];//extracts the catergory from the prefix by spliting the string at the hyphen
+      
     });
 });
 
@@ -181,7 +186,6 @@ document.getElementById('close-popup').addEventListener('click', function() {
 });
 
 spinButton.addEventListener('click', updatePrompts);
-
 updatePrompts();
 
 const openPopupBtn = document.getElementById('open-popup-btn');
@@ -190,12 +194,22 @@ const popup = document.getElementById('popup');
 
 
 openPopupBtn.addEventListener('click', () => {
-  popup.classList.add('show'); // Add "show" class to trigger animation
+  popup.classList.add('show'); 
 });
 
 
 closePopupBtn.addEventListener('click', () => {
-  popup.classList.remove('show'); // Remove "show" class to hide popup
+  popup.classList.remove('show'); 
+});
+
+
+
+const navItems = document.querySelectorAll('.nav-item');
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const navText = item.querySelector('span').textContent.trim();
+        alert(`Navigating to: ${navText}`);
+    });
 });
 
 

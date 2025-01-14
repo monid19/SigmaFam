@@ -26,8 +26,8 @@ header{
 .category {
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: #DCE5DD;
-  color: #4B4453;
+  background-color: #EAEDE9;
+  color: #9BC1BC;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.1s ease;
@@ -47,7 +47,7 @@ header{
   padding: 20px;
   margin: 0 auto;
   max-width: 1000px;
-  min-height: 400px;
+  min-height: 400px; 
 }
 
 .prompt-box {
@@ -66,6 +66,12 @@ header{
   position: relative;
   transition: transform 0.1s ease, opacity 0.1s ease;
 }
+
+#left-box { 
+  transform : rotate (-45)
+
+
+
 
 .prompt-box.left, .prompt-box.right {
   opacity: 0.6;
@@ -191,4 +197,75 @@ header{
         transform: scale(1);
         opacity: 1;
     }
+}
+
+nav{
+  width: 360px;
+  height: 60px;
+  background-color: #fefefe;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  padding: 20px 0;
+  left: 50%; 
+  transform: translateX(-50%);
+  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+  padding: 0;
+  margin: 0;
+  position: fixed;
+}
+
+.nav-line{
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.nav-item{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  width: 100%;    
+  cursor: pointer; 
+  text-decoration: none;
+}
+
+.nav-item .nav-icon {
+  width: auto; 
+  height: 24px; 
+  padding-bottom: 10px;
+}
+
+.nav-item span{
+  flex-direction: column;
+  color: #5D576A;
+  font-size: 10px;
+  font-weight: lighter;
+}
+
+.new-item{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #E6EBE0;
+  border: #fefefe solid 10px;
+  position: relative; 
+  top: -20px; 
+  z-index: 1; 
+  text-decoration: none;
+}
+
+.new-item .plus-icon{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
 }
