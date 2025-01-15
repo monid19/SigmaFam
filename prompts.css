@@ -83,7 +83,9 @@ header{
 
 .prompt-box.left, .prompt-box.right {
   opacity: 0.6;
+  background-color: #d8eae5;
   transform: scale(0.9);
+  filter: blur(4px);
 }
 
 .prompt-box.center {
