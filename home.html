@@ -5,74 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed UI</title>
 <link rel="stylesheet" href="home.css">
+
+
 </head>
 <body>
-    <div class="header">
+
+     <div class="header">
         <h1>Hi Tatee!!!!</h1>
         <img src="images/IMG_5275.JPG" alt="Profile Picture">
     </div>
 
-    <div class="memory-card">
+    <div class="memory-card" id = "memory-card">
         <img src="images/227f4c70-d628-4320-9337-b6c66d6db664.JPG" alt="Memory">
-        <div class="memory-info">Memory<br>28-11-2023</div>
+        <div class="memory-info">Memory<br>26-12-2024</div>
         <button class="add-button">+</button>
+        <input type = "file" id="file-input" accept="image/*" style="display: none;">
     </div>
 
     <div class="feed">
         <div class="feed-item">
             <img src="images/IMG_4549.JPG" alt="Post Image">
             <div class="info">
-                <p>Anetete</p>
+                <p>Tatee</p>
                 <p>28-11-2024</p>
             </div>
         </div>
         <div class="feed-item">
-            <img src="images/IMG_4608.heic" alt="Post Image">
+            <img src="images/IMG_4046.jpg" alt="Post Image">
             <div class="info">
-                <p>Sven</p>
-                <p>28-11-2024</p>
+                <p>Tatee</p>
+                <p>felt cute might delete later </p>
             </div>
         </div>
         <div class="feed-item">
             <img src="images/IMG_4644.jpg" alt="Post Image">
             <div class="info">
-                <p>Anetete</p>
-                <p>27-11-2024</p>
+                <p>Tatee     </p>
+                <p>might be the greatest </p>
             </div>
         </div>
     </div>
+    <div class="phone-frame">
+        <div class="camera"></div>
+    </div>
+    <nav>
+        <div class="nav-line">
+        
+        <a href="prompts.html" class="nav-item">
+            <img src="images/prompts.PNG" alt="Prompts" class="nav-icon">
+           
+            <span>Prompts</span>
+        </a>
+        <a href="home.html" class="nav-item">
+            <img src="images/home.PNG" alt="Home" class="nav-icon">
+            <span>Home</span>
+        </a>
+    
+        <a href="#new" class="new-item">
+            <i class="fas fa-plus plus-icon"></i>
+        </a>
+    
+        <a href="profile.html" class="nav-item">
+            <img src="images/profile.PNG" alt="Profile" class="nav-icon">
+            <span>Profile</span>
+        </a>
+        <a href="achievements.html" class="nav-item">
+            <img src="images/achievements.PNG" alt="Achievements" class="nav-icon">
+            <span>Achievements</span>
+
+        </a>
+        
+
+        </div>
+    </nav>
+   
 
     <div class="end-message">You've reached the end of the feed. For now...</div>
 
-    <div class="nav-bar">
-        <div class="icon">
-            <span>Home</span>
-        </div>
-        <div class="icon">
-            <span>Prompts</span>
-        </div>
-        <div class="icon">
-            <span>+</span>
-        </div>
-        <div class="icon">
-            <span>Achievements</span>
-        </div>
-        <div class="icon">
-            <span>Profile</span>
-        </div>
-    </div>
+    
 
     <script>
-        document.querySelector('.add-button').addEventListener('click', () => {
-            alert('Add new memory feature coming soon!');
-        });
+    const addButton = document.getElementById('add-button');
+       const fileInput = document.getElementById('file-input');
+             const memoryCard = document.getElementById('memory-card');
+       
+       addButton.addEventListener('click', () => {
+           fileInput.click();
+       });
+       
+       fileInput.addEventListener('change', () => {
+           const file = fileInput.files[0];
+           const reader = new FileReader();
+           reader.onload = () => {
+               const image = new Image();
+               image.src = reader.result;
+               image.onload = () => {
+                   memoryCard.style.backgroundImage = `url(${image.src})`;
+               };
+           };
+           reader.readAsDataURL(file);
+       });
+        
+        
+        
+        
+        
+        
+        
 
-        const navIcons = document.querySelectorAll('.nav-bar .icon');
-        navIcons.forEach(icon => {
-            icon.addEventListener('click', () => {
-                alert(`Navigating to: ${icon.textContent.trim()}`);
-            });
-        });
+       
+
     </script>
 </body>
 </html>

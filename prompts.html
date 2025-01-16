@@ -37,31 +37,33 @@
 <nav>
     <div class="nav-line">
     
-    <a href="#prompts" class="nav-item">
+    <a href="prompts.html" class="nav-item">
         <img src="images/prompts.PNG" alt="Prompts" class="nav-icon">
         <span>Prompts</span>
     </a>
-    <a href="#home" class="nav-item">
+    <a href="home.html" class="nav-item">
         <img src="images/home.PNG" alt="Home" class="nav-icon">
         <span>Home</span>
     </a>
 
-    <a href="#new" class="new-item">
+    <a href="home.html" class="new-item">
         <i class="fas fa-plus plus-icon"></i>
     </a>
 
-    <a href="#profile" class="nav-item">
+    <a href="profile.html" class="nav-item">
         <img src="images/profile.PNG" alt="Profile" class="nav-icon">
         <span>Profile</span>
     </a>
-    <a href="#achievements" class="nav-item">
+    <a href="achievements.html" class="nav-item">
         <img src="images/achievements.PNG" alt="Achievements" class="nav-icon">
         <span>Achievements</span>
     </a>
     </div>
 </nav>
            
-
+<div class="phone-frame">
+    <div class="camera"></div>
+</div>
          
 
               <div class="popup-overlay" id="popup-overlay">
@@ -76,7 +78,7 @@
           <script>
              const prompts = {
             school: [
-                "michael is doing his best ?",
+                "what do you want to study in university ?",
                 "Who was your most memorable teacher?",
                 "What's your best school memory?",
                 "What's the most valuable lesson you learned in school?",
@@ -124,20 +126,15 @@ function getRandomPrompt(category, exclude) {
 }
 
 function fireConfetti() {
-    setTimeout(() => {
-        
-    
     const colors = ['#FF6B6B', '#FFE66D', '#4ECDC4', '#95E1D3'];
 
     confetti({
         particleCount: 1000,
         spread: 70,
-        
         origin: { y: 0.6 },
         colors: colors,
         disableForReducedMotion: true
     });
-} , 100);
 }
 
 function showPopup(prompt) {
@@ -173,7 +170,7 @@ function updatePrompts() {
       if (showPopupOnUpdate){
         showPopup(centerText);
       }
-        
+       showPopupOnUpdate = true; //ensures following updates show the popup
     }, 100);
 }
 
@@ -182,7 +179,7 @@ document.querySelectorAll('.category').forEach(button => {
         document.querySelectorAll('.category').forEach(b => b.classList.remove('active'));
         button.classList.add('active');
         currentCategory = button.id.split('-')[0];//extracts the catergory from the prefix by spliting the string at the hyphen
-        showPopupOnUpdate = false ;
+        showPopupOnUpdate = false;
         updatePrompts();
       
     });
@@ -194,13 +191,20 @@ document.getElementById('close-popup').addEventListener('click', function() {
 
 spinButton.addEventListener('click', updatePrompts);
 updatePrompts();
-showPopupOnUpdate = true;
 
 const openPopupBtn = document.getElementById('open-popup-btn');
 const closePopupBtn = document.getElementById('close-popup-btn');
 const popup = document.getElementById('popup');
 
 
+openPopupBtn.addEventListener('click', () => {
+  popup.classList.add('show'); 
+});
+
+
+closePopupBtn.addEventListener('click', () => {
+  popup.classList.remove('show'); 
+});
 
 
 
