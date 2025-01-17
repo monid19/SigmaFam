@@ -10,18 +10,20 @@
 </head>
 <body>
 
-     <div class="header">
+    <div class="header">
         <h1>Hi Tatee!!!!</h1>
         <img src="images/IMG_5275.JPG" alt="Profile Picture">
     </div>
 
-    <div class="memory-card" id = "memory-card">
+    
+    <div class="memory-card" id="memory-card">
         <img src="images/227f4c70-d628-4320-9337-b6c66d6db664.JPG" alt="Memory">
         <div class="memory-info">Memory<br>26-12-2024</div>
         <button class="add-button">+</button>
-        <input type = "file" id="file-input" accept="image/*" style="display: none;">
+        <input type="file" id="file-input" accept="image/*" style="display: none;">
     </div>
 
+    
     <div class="feed">
         <div class="feed-item">
             <img src="images/IMG_4549.JPG" alt="Post Image">
@@ -34,87 +36,59 @@
             <img src="images/IMG_4046.jpg" alt="Post Image">
             <div class="info">
                 <p>Tatee</p>
-                <p>felt cute might delete later </p>
+                <p>felt cute might delete later</p>
             </div>
         </div>
         <div class="feed-item">
             <img src="images/IMG_4644.jpg" alt="Post Image">
             <div class="info">
-                <p>Tatee     </p>
-                <p>might be the greatest </p>
+                <p>Tatee</p>
+                <p>might be the greatest</p>
             </div>
         </div>
     </div>
-    <div class="phone-frame">
-        <div class="camera"></div>
-    </div>
+
+    
     <nav>
-        <div class="nav-line">
-        
         <a href="prompts.html" class="nav-item">
-            <img src="images/prompts.PNG" alt="Prompts" class="nav-icon">
-           
+            <img src="images/prompts.PNG" alt="Prompts Icon">
             <span>Prompts</span>
         </a>
         <a href="home.html" class="nav-item">
-            <img src="images/home.PNG" alt="Home" class="nav-icon">
+            <img src="images/home.PNG" alt="Home Icon">
             <span>Home</span>
         </a>
-    
-        <a href="#new" class="new-item">
-            <i class="fas fa-plus plus-icon"></i>
-        </a>
-    
+        <div class="new-item">+</div>
         <a href="profile.html" class="nav-item">
-            <img src="images/profile.PNG" alt="Profile" class="nav-icon">
+            <img src="images/profile.PNG" alt="Profile Icon">
             <span>Profile</span>
         </a>
         <a href="achievements.html" class="nav-item">
-            <img src="images/achievements.PNG" alt="Achievements" class="nav-icon">
+            <img src="images/achievements.PNG" alt="Achievements Icon">
             <span>Achievements</span>
-
         </a>
-        
-
-        </div>
     </nav>
-   
 
-    <div class="end-message">You've reached the end of the feed. For now...</div>
-
-    
-
+  
     <script>
-    const addButton = document.getElementById('add-button');
-       const fileInput = document.getElementById('file-input');
-             const memoryCard = document.getElementById('memory-card');
-       
-       addButton.addEventListener('click', () => {
-           fileInput.click();
-       });
-       
-       fileInput.addEventListener('change', () => {
-           const file = fileInput.files[0];
-           const reader = new FileReader();
-           reader.onload = () => {
-               const image = new Image();
-               image.src = reader.result;
-               image.onload = () => {
-                   memoryCard.style.backgroundImage = `url(${image.src})`;
-               };
-           };
-           reader.readAsDataURL(file);
-       });
-        
-        
-        
-        
-        
-        
-        
+        const addButton = document.querySelector('.add-button');
+        const fileInput = document.getElementById('file-input');
+        const memoryImage = document.querySelector('.memory-card img');
 
-       
+        addButton.addEventListener('click', () => {
+            fileInput.click();
+        });
 
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    memoryImage.src = reader.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     </script>
 </body>
 </html>
